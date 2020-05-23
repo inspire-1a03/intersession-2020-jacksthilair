@@ -1,4 +1,4 @@
-# Add your page title and name here
+# Jack St Hilaire title page
 <!--
 Welcome to your project page for Electronics for the Rest of Us. You'll use this page to describe and showcase your work throughout the module. 
 A place for each deliverable has been created below for you in this markdown document. 
@@ -24,14 +24,132 @@ Replace the elements below to insert your picture.
 ![Markdown logo](images/markdown.png "This is the Markdown logo!")
 
 ## Day 2: Results
-<!--
+<!--/*
+ * Inputs ADC Value from Thermistor and outputs Temperature in Celsius
+ *  requires: include <math.h>
+ * Utilizes the Steinhart-Hart Thermistor Equation:
+ *    Temperature in Kelvin = 1 / {A + B[ln(R)] + C[ln(R)]3}
+ *    where A = 0.001129148, B = 0.000234125 and C = 8.76741E-08
+ *
+ * These coefficients seem to work fairly universally, which is a bit of a 
+ * surprise. 
+ *
+ * Schematic:
+ *   [Ground] -- [10k-pad-resistor] -- | -- [thermistor] --[Vcc (5 or 3.3v)]
+ *                                               |
+ *                                          Analog Pin 0
+ *
+ * In case it isn't obvious (as it wasn't to me until I thought about it), the analog ports
+ * measure the voltage between 0v -> Vcc which for an Arduino is a nominal 5v, but for (say) 
+ * a JeeNode, is a nominal 3.3v.
+ *
+ * The resistance calculation uses the ratio of the two resistors, so the voltage
+ * specified above is really only required for the debugging that is commented out below
+ *
+ * Resistance = PadResistor * (1024/ADC -1)  
+ *
+ * I have used this successfully with some CH Pipe Sensors (https://www.atcsemitec.co.uk/pdfdocs/ch.pdf)
+ * which be obtained from https://www.rapidonline.co.uk.
+ *
+ */
+
+#include <math.h>
+
+#define ThermistorPIN 0                 // Analog Pin 0
+
+float vcc = 4.91;                       // only used for display purposes, if used
+                                        // set to the measured Vcc.
+float pad = 9850;                       // balance/pad resistor value, set this to
+                                        // the measured resistance of your pad resistor
+float thermr = 10000;                   // thermistor nominal resistance
+
+float Thermistor(int RawADC) {
+  long Resistance;  
+  float Temp;  // Dual-Purpose variable to save space.
+
+  Resistance=pad*((1024.0 / RawADC) - 1); 
+  Temp = log(Resistance); // Saving the Log(resistance) so not to calculate  it 4 times later
+  Temp = 1 / (0.001129148 + (0.000234125 * Temp) + (0.0000000876741 * Temp * Temp * Temp));
+  Temp = Temp - 273.15;  // Convert Kelvin to Celsius                      
+
+  // BEGIN- Remove these lines for the function not to display anything
+  //Serial.print("ADC: "); 
+  //Serial.print(RawADC); 
+  //Serial.print("/1024");                           // Print out RAW ADC Number
+  //Serial.print(", vcc: ");
+  //Serial.print(vcc,2);
+  //Serial.print(", pad: ");
+  //Serial.print(pad/1000,3);
+  //Serial.print(" Kohms, Volts: "); 
+  //Serial.print(((RawADC*vcc)/1024.0),3);   
+  //Serial.print(", Resistance: "); 
+  //Serial.print(Resistance);
+  //Serial.print(" ohms, ");
+  // END- Remove these lines for the function not to display anything
+
+  // Uncomment this line for the function to return Fahrenheit instead.
+  //temp = (Temp * 9.0)/ 5.0 + 32.0;                  // Convert to Fahrenheit
+  return Temp;                                      // Return the Temperature
+}
+
+
+int redPin = 11;
+int greenPin = 10;
+int bluePin = 9;
+
+//uncomment this line if using a Common Anode LED
+//#define COMMON_ANODE
+
+void setup()
+{
+  Serial.begin(115200);
+  pinMode(redPin, OUTPUT);
+  pinMode(greenPin, OUTPUT);
+  pinMode(bluePin, OUTPUT);  
+}
+
+void loop()
+{
+    float temp;
+  temp=Thermistor(analogRead(ThermistorPIN));       // read ADC and  convert it to Celsius
+  Serial.print("Celsius: "); 
+  Serial.print(temp,1);                             // display Celsius
+  //temp = (temp * 9.0)/ 5.0 + 32.0;                  // converts to  Fahrenheit
+  //Serial.print(", Fahrenheit: "); 
+  //Serial.print(temp,1);                             // display  Fahrenheit
+  Serial.println("");                                   
+  delay(1000);                                      // Delay a bit... 
+
+  if(temp > 30){
+   setColor(255, 0, 0);  // red
+  }
+ else if(temp > 20 & temp < 30){ 
+  setColor(0, 255, 0);  // green
+ }
+  else {
+  setColor(0, 0, 255);  // blue
+  }
+}
+
+void setColor(int red, int green, int blue)
+{
+  #ifdef COMMON_ANODE
+    red = 255 - red;
+    green = 255 - green;
+    blue = 255 - blue;
+  #endif
+  analogWrite(redPin, red);
+  analogWrite(greenPin, green);
+  analogWrite(bluePin, blue);  
+}
+
 Upload your fully-commented Arduino sketch from your final Day 2 build task--a thermometer connected to an RDB LED--into your GitHub repository.
 Provide a short (~150 words) summary of your work on this circuit:
 - How does your device work?
 - What was challenging? 
 - What worked? What didn't? 
 - Be sure to link to your code (in your GitHub repository) in the text of your response.
--->
+--> This circuit I made serves a purpose to show a certain colour which represents the temperature. For example, I set it to display red if the temperature is greater than 30 degrees Celsius and to display green if the temperature is greater than 20 and less than 30. I found it easy to build the thermometer, but I made some crucial mistakes by using the potentiometer instead of the photoresistor. Other than this, Jay made it simple to follow along and was great at showing a tutorial on how to do it. It all worked but not after I had some slight modifications. I had to do different steps because I did not have a common anode. This made some of my steps different from where I had to plug in certain jumpers to different areas. For example, I had to plug it into ground for one of my jumpers. Making the circuit was a lot of fun and I never thought I would have been able to make something like this before this course. 
 
 ## Arduino build-off results
 <!--
