@@ -173,9 +173,9 @@ You can find more information at these links:
 -->
 | Feature | Description | Other Notes |
 |---------|-------------|-------------|
-|         |             |             |
-|         |             |             |
-|         |             |             |
+|   photresistor      |     this calculates the temperature and is able to work with the RGB LED to change its colours       |             |
+|   RGB LED changes       |   changes to 3 diffrent colours          |             |
+|      Buzzer  |   Buzzer sounds when it is above 30 degrees and displays a red colour          |             |
 |         |             |             |
 
 
