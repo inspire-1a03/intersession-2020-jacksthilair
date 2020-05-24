@@ -162,7 +162,7 @@ In ~300 words, provide a final device description and product pitch:
 - Include a snippet of code using the ``` ``` characters to display the code properly. 
 Finally, record a short (30 second) video of a 'product pitch' for your device. 
 - Upload the video to Youtube, and use the sample code below to embed your video.
--->
+-->https://youtu.be/FIm8gJ06mCQ 
 
 
 <!--
