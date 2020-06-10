@@ -24,7 +24,10 @@ Replace the elements below to insert your picture.
 ![Markdown logo](images/markdown.png "This is the Markdown logo!")
 
 ## Day 2: Results
-<!--/*
+<!--
+-->
+```
+/*
  * Inputs ADC Value from Thermistor and outputs Temperature in Celsius
  *  requires: include <math.h>
  * Utilizes the Steinhart-Hart Thermistor Equation:
@@ -142,18 +145,20 @@ void setColor(int red, int green, int blue)
   analogWrite(greenPin, green);
   analogWrite(bluePin, blue);  
 }
-
+```
+<!--
 Upload your fully-commented Arduino sketch from your final Day 2 build task--a thermometer connected to an RDB LED--into your GitHub repository.
 Provide a short (~150 words) summary of your work on this circuit:
 - How does your device work?
 - What was challenging? 
 - What worked? What didn't? 
 - Be sure to link to your code (in your GitHub repository) in the text of your response.
---> This circuit I made serves a purpose to show a certain colour which represents the temperature. For example, I set it to display red if the temperature is greater than 30 degrees Celsius and to display green if the temperature is greater than 20 and less than 30. I found it easy to build the thermometer, but I made some crucial mistakes by using the potentiometer instead of the photoresistor. Other than this, Jay made it simple to follow along and was great at showing a tutorial on how to do it. It all worked but not after I had some slight modifications. I had to do different steps because I did not have a common anode. This made some of my steps different from where I had to plug in certain jumpers to different areas. For example, I had to plug it into ground for one of my jumpers. Making the circuit was a lot of fun and I never thought I would have been able to make something like this before this course. 
+--> 
+
+This circuit I made serves a purpose to show a certain colour which represents the temperature. For example, I set it to display red if the temperature is greater than 30 degrees Celsius and to display green if the temperature is greater than 20 and less than 30. I found it easy to build the thermometer, but I made some crucial mistakes by using the potentiometer instead of the photoresistor. Other than this, Jay made it simple to follow along and was great at showing a tutorial on how to do it. It all worked but not after I had some slight modifications. I had to do different steps because I did not have a common anode. This made some of my steps different from where I had to plug in certain jumpers to different areas. For example, I had to plug it into ground for one of my jumpers. Making the circuit was a lot of fun and I never thought I would have been able to make something like this before this course. 
 
 ## Arduino build-off results
-<!--The Arduino circuit I built is my colour coordinated weather station. There are many circuits working in motion to create this weather station. The way it works is that it shows certain colours for a specific temperature. The RGB will light up green when is in between the temperature 25-30 degrees. It will light up blue if it below 25 degrees. And if it above 30 degrees Celsius it will light up red and a buzzer will sound until it drops below this temperature. The way it is able to read the temperature is with a photoresistor. This weather station that I have coined the Colourful Weather Station 3000 can be used in some unique circumstances. It can be used if you have to have a room kept at a certain temperature for example if the room can not be over 30 degrees, you can place the Weather Station 3000 in the room and the buzzer will sound if I gets above that temperature. This can also be very handy for having it outside and be able to tell the temperature. If the Weather Station 3000 is red that means it is way too hot outside and you should stay inside. If it displays green that means you are good to go outside because it is a comfortable temperature and you should enjoy the outdoors. The best way to use this device is to have it in an area that should not be above 30 degrees Celsius to the buzzer will go off. I did not know it was possible to have all these separate components working together in harmony to make the Weather Station 3000. I am very impressed that I was able to build something that is so complicated with no prior knowledge for anything like this. 
-Upload your fully-commented Arduino sketch from the final product of your Arduino build-off into the top-level of your module GitHub repository.
+<!--Upload your fully-commented Arduino sketch from the final product of your Arduino build-off into the top-level of your module GitHub repository.
 In ~300 words, provide a final device description and product pitch: 
 - What does it do? Use a table (created in markdown) to list and describe the features. You can use the template provided below. 
 - Describe briefly how it works.
@@ -162,7 +167,10 @@ In ~300 words, provide a final device description and product pitch:
 - Include a snippet of code using the ``` ``` characters to display the code properly. 
 Finally, record a short (30 second) video of a 'product pitch' for your device. 
 - Upload the video to Youtube, and use the sample code below to embed your video.
--->https://youtu.be/FIm8gJ06mCQ 
+https://youtu.be/FIm8gJ06mCQ 
+-->
+
+
 The Arduino circuit I built is my colour coordinated weather station. There are many circuits working in motion to create this weather station. The way it works is that it shows certain colours for a specific temperature. The RGB will light up green when is in between the temperature 25-30 degrees. It will light up blue if it below 25 degrees. And if it above 30 degrees Celsius it will light up red and a buzzer will sound until it drops below this temperature. The way it is able to read the temperature is with a photoresistor. This weather station that I have coined the Colourful Weather Station 3000 can be used in some unique circumstances. It can be used if you have to have a room kept at a certain temperature for example if the room can not be over 30 degrees, you can place the Weather Station 3000 in the room and the buzzer will sound if I gets above that temperature. This can also be very handy for having it outside and be able to tell the temperature. If the Weather Station 3000 is red that means it is way too hot outside and you should stay inside. If it displays green that means you are good to go outside because it is a comfortable temperature and you should enjoy the outdoors. The best way to use this device is to have it in an area that should not be above 30 degrees Celsius to the buzzer will go off. I did not know it was possible to have all these separate components working together in harmony to make the Weather Station 3000. I am very impressed that I was able to build something that is so complicated with no prior knowledge for anything like this. 
 
 
@@ -172,6 +180,7 @@ You can find more information at these links:
 - https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#tables
 
 -->
+
 | Feature | Description | Other Notes |
 |---------|-------------|-------------|
 |   photresistor      |     this calculates the temperature and is able to work with the RGB LED to change its colours       |             |
@@ -188,7 +197,7 @@ Note that this video won't show when previewing the document in GitHub--it only 
 - Note that you may want to adjust the width and height parameters to make it fit well in your webpage
 -->
 
-<iframe width="789" height="444" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="789" height="444" src="https://www.youtube.com/embed/FIm8gJ06mCQ " frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ## Final reflection & summary
@@ -196,4 +205,5 @@ Note that this video won't show when previewing the document in GitHub--it only 
 In ~300 words:
 - Summarize your experience in this module. What you learned, what you liked, what you found challenging.
 - Reflect upon your learning and its relevance in your life.
--->For the Inspire course I had three unique modules, and this has been my favourite one. Going into this module it was definitely the most daunting as I have never done anything with electronics or coding before. Working with the Arduino was exciting as it was satisfying to be able to see something that you have built come to life. I enjoy doing things hands on rather than writing tests and exams, so this module was refreshing. The feeling you got after you hooked something up to your bread board and it worked was something I did not expect to happen with this course. One aspect I found challenging was how I had to submit my work. I am not the most tech savvy and I was not sure if I was submitting it the right way. I did all the work and made sure I put it where I thought it should go but it was frustrating to think that I might have not have submitted it properly. I do understand that this was a core element of the course and I am here to learn new things. What made this possible was the very helpful way Jay made it to follow along as well as going above and beyond by dropping off a new Arduino at my house when mine was faulty. With everything being online it made the course harder to teach, but he was helpful with troubleshooting and helping me to figure out how to work my devices. This module has opened my eyes to something that I never thought I would be interested in. My favourite part was building with the Arduinos and use a code to produce a certain function. For example, my weather station was awesome as I had three functions working in unison to create my Weather Station 3000. I can use this in my everyday life with having some skills to create a website through GitHub. It also made me think about how electronics are part of so many things, from using a remote to turn on the TV to playing video games. This module was educational, hands on and fun and I would recommend this course to anyone.
+-->
+For the Inspire course I had three unique modules, and this has been my favourite one. Going into this module it was definitely the most daunting as I have never done anything with electronics or coding before. Working with the Arduino was exciting as it was satisfying to be able to see something that you have built come to life. I enjoy doing things hands on rather than writing tests and exams, so this module was refreshing. The feeling you got after you hooked something up to your bread board and it worked was something I did not expect to happen with this course. One aspect I found challenging was how I had to submit my work. I am not the most tech savvy and I was not sure if I was submitting it the right way. I did all the work and made sure I put it where I thought it should go but it was frustrating to think that I might have not have submitted it properly. I do understand that this was a core element of the course and I am here to learn new things. What made this possible was the very helpful way Jay made it to follow along as well as going above and beyond by dropping off a new Arduino at my house when mine was faulty. With everything being online it made the course harder to teach, but he was helpful with troubleshooting and helping me to figure out how to work my devices. This module has opened my eyes to something that I never thought I would be interested in. My favourite part was building with the Arduinos and use a code to produce a certain function. For example, my weather station was awesome as I had three functions working in unison to create my Weather Station 3000. I can use this in my everyday life with having some skills to create a website through GitHub. It also made me think about how electronics are part of so many things, from using a remote to turn on the TV to playing video games. This module was educational, hands on and fun and I would recommend this course to anyone.
